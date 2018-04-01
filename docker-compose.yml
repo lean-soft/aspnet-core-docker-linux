@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  aspnet-core-docker-linux:
+    image: aspnetcoredockerlinux
+    build:
+      context: .
+      dockerfile: aspnet-core-docker-linux/Dockerfile

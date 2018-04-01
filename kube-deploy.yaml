@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: aspnetcore-dockerlinux
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: aspnetcore-dockerlinux
+    spec:
+      containers:
+      - name: aspnetcore-dockerlinux
+        image: leixuacr.azurecr.io/linux/aspnetcore-dockerlinux:v1
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aspnetcore-dockerlinux
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: aspnetcore-dockerlinux
