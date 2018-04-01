@@ -1,5 +1,5 @@
-apiVersion: apps/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
   name: aspnetcore-dockerlinux
 spec:
@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: aspnetcore-dockerlinux
-        image: leixuacr.azurecr.io/linux/aspnetcore-dockerlinux:v1
+        image: <acrname>.azurecr.io/linux/aspnetcore-dockerlinux:v1
         ports:
         - containerPort: 80
       imagePullSecrets:
